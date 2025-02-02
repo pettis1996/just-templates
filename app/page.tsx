@@ -5,7 +5,7 @@ export default function Home() {
     <div>
       <section className="bg-indigo-700 text-white py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Welcome to TemplateHub</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">Welcome to Just Templates</h1>
           <p className="text-xl mb-8">Discover stunning templates and components for your next web project</p>
           <Link
             href="/templates"
@@ -18,7 +18,7 @@ export default function Home() {
 
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Why Choose TemplateHub?</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">Why Choose Just Templates?</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="bg-indigo-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">

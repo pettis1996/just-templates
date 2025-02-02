@@ -1,3 +1,4 @@
+import Header from "@/components/header"
 import "./globals.css"
 import { Inter } from "next/font/google"
 import type React from "react" // Import React
@@ -17,7 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="min-h-screen bg-background text-foreground">{children}</div>
+        <div className="min-h-screen bg-background text-foreground">
+          <Header />
+          {children}
+        </div>
       </body>
     </html>
   )
