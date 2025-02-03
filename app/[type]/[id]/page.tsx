@@ -55,7 +55,7 @@ export default function ItemPage() {
                     </a>
                     <button
                         onClick={() => alert('Downloading...')}
-                        className="bg-yellow-600 text-black px-4 py-2 hover:bg-yellow-700 font-semibold transition"
+                        className="bg-yellow-500 text-black px-4 py-2 hover:bg-yellow-600 font-semibold transition"
                     >
                         Download
                     </button>
