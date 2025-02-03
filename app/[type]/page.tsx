@@ -41,7 +41,7 @@ export default function DynamicPage() {
 
     return (
         <div className="container mx-auto px-6 py-16">
-            <h1 className="text-4xl font-bold text-center mb-12">Explore Free {type}</h1>
+            <h1 className="text-4xl font-bold text-center mb-12">Explore Free {type === "templates" ? "Website Templates" : "Component Templates"}</h1>
 
             <div className="flex">
                 {/* Sidebar Filter */}
