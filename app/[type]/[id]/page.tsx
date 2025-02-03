@@ -38,13 +38,28 @@ export default function ItemPage() {
                 <div className="flex flex-wrap gap-2 mb-8">
                     <CustomBadge>Template Type: {type}</CustomBadge>
                     <CustomBadge>Template Category: {item.category}</CustomBadge>
-                    <CustomBadge>Created At: {new Date().toLocaleDateString()}</CustomBadge>
-                    <CustomBadge>Last updated: {new Date().toLocaleDateString()}</CustomBadge>
                     <CustomBadge>Author: {item.author || "Unknown"}</CustomBadge>
                 </div>
 
                 <h2 className="text-2xl font-bold mb-4">Template Description</h2>
-                <p className="text-gray-600 mb-4">{item.description}</p>
+                <p className="text-gray-600 mb-8">{item.description}</p>
+
+                <div className="flex gap-4">
+                    <a
+                        href="#"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-indigo-600 text-white px-4 py-2 hover:bg-indigo-700 font-semibold transition"
+                    >
+                        Go to Repo
+                    </a>
+                    <button
+                        onClick={() => alert('Downloading...')}
+                        className="bg-yellow-600 text-black px-4 py-2 hover:bg-yellow-700 font-semibold transition"
+                    >
+                        Download
+                    </button>
+                </div>
             </div>
         </div>
     );
