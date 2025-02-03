@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -66,10 +65,7 @@ export default function DynamicPage() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 flex-1">
                     {filteredItems.map((item) => (
-                        <div
-                            key={item.id}
-                            className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300"
-                        >
+                        <div key={item.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
                             <img
                                 src={item.image || "/placeholder.svg"}
                                 alt={item.title}
