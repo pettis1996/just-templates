@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useParams } from "next/navigation";
@@ -44,7 +45,6 @@ export default function DynamicPage() {
             <h1 className="text-4xl font-bold text-center mb-12">Explore Free {type === "templates" ? "Website Templates" : "Component Templates"}</h1>
 
             <div className="flex">
-                {/* Sidebar Filter */}
                 <aside className="w-72 p-6 bg-white shadow-xl rounded-lg mr-10">
                     <h2 className="text-2xl font-semibold mb-6 text-gray-800">Categories</h2>
                     <ul className="space-y-4">
@@ -64,7 +64,6 @@ export default function DynamicPage() {
                     </ul>
                 </aside>
 
-                {/* Content Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 flex-1">
                     {filteredItems.map((item) => (
                         <div
