@@ -27,35 +27,39 @@ export default function ItemPage() {
     }
 
     return (
-        <div className="container mx-auto px-4 py-16">
-            <h1 className="text-3xl font-bold mb-8 text-center">{item.title}</h1>
+        <div className="container mx-auto px-6 py-16">
+            <h1 className="text-4xl font-bold mb-12 text-center text-gray-800">{item.title}</h1>
 
-            <div className="max-w-2xl mx-auto">
-                <div className="relative w-full h-60 bg-gray-100 mb-5">
-                    <Image src={item.image} alt={item.title} fill className="object-cover rounded" />
+            <div className="max-w-4xl mx-auto">
+                {/* Image Section */}
+                <div className="relative w-full h-72 bg-gray-100 rounded-xl overflow-hidden shadow-lg mb-8">
+                    <Image src={item.image} alt={item.title} fill className="object-cover" />
                 </div>
 
-                <div className="flex flex-wrap gap-2 mb-8">
-                    <CustomBadge>Template Type: {type}</CustomBadge>
-                    <CustomBadge>Template Category: {item.category}</CustomBadge>
+                {/* Badges Section */}
+                <div className="flex flex-wrap gap-3 mb-8">
+                    <CustomBadge>Type: {type}</CustomBadge>
+                    <CustomBadge>Category: {item.category}</CustomBadge>
                     <CustomBadge>Author: {item.author || "Unknown"}</CustomBadge>
                 </div>
 
-                <h2 className="text-2xl font-bold mb-4">Template Description</h2>
-                <p className="text-gray-600 mb-8">{item.description}</p>
+                {/* Template Description */}
+                <h2 className="text-3xl font-semibold mb-4">Description</h2>
+                <p className="text-gray-600 text-lg mb-10 leading-relaxed">{item.description}</p>
 
-                <div className="flex gap-4">
+                {/* Buttons Section */}
+                <div className="flex gap-6">
                     <a
                         href="#"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-indigo-600 text-white px-4 py-2 hover:bg-indigo-700 font-semibold transition"
+                        className="bg-indigo-600 text-white px-6 py-3 rounded-full shadow-md hover:bg-indigo-700 font-semibold transition"
                     >
                         Go to Repo
                     </a>
                     <button
-                        onClick={() => alert('Downloading...')}
-                        className="bg-yellow-500 text-black px-4 py-2 hover:bg-yellow-600 font-semibold transition"
+                        onClick={() => alert("Downloading...")}
+                        className="bg-yellow-500 text-black px-6 py-3 rounded-full shadow-md hover:bg-yellow-600 font-semibold transition"
                     >
                         Download
                     </button>
