@@ -7,14 +7,14 @@ import { Item, ItemType } from "../types";
 
 const data: Record<ItemType, Item[]> = {
     templates: [
-        { id: 1, title: "Blog Template", description: "A clean and modern blog layout", image: "/placeholder.svg", category: "Blog" },
-        { id: 2, title: "Portfolio Template", description: "Showcase your work with style", image: "/placeholder.svg", category: "Portfolio" },
-        { id: 3, title: "E-commerce Template", description: "Start selling products online", image: "/placeholder.svg", category: "E-commerce" },
+        { id: 1, title: "Blog Template", description: "A clean and modern blog layout", author: "Admin", image: "/placeholder.svg", category: "Blog" },
+        { id: 2, title: "Portfolio Template", description: "Showcase your work with style", author: "Admin", image: "/placeholder.svg", category: "Portfolio" },
+        { id: 3, title: "E-commerce Template", description: "Start selling products online", author: "Admin", image: "/placeholder.svg", category: "E-commerce" },
     ],
     components: [
-        { id: 1, title: "Navigation Bar", description: "Responsive top navigation", image: "/placeholder.svg", category: "Navigation" },
-        { id: 2, title: "Hero Section", description: "Eye-catching hero with CTA", image: "/placeholder.svg", category: "Hero" },
-        { id: 3, title: "Footer", description: "Comprehensive footer with links", image: "/placeholder.svg", category: "Footer" },
+        { id: 1, title: "Navigation Bar", description: "Responsive top navigation", author: "Admin", image: "/placeholder.svg", category: "Navigation" },
+        { id: 2, title: "Hero Section", description: "Eye-catching hero with CTA", author: "Admin", image: "/placeholder.svg", category: "Hero" },
+        { id: 3, title: "Footer", description: "Comprehensive footer with links", author: "Admin", image: "/placeholder.svg", category: "Footer" },
     ],
 };
 
