@@ -10,12 +10,10 @@ export default async function Header() {
     return (
         <header className="bg-white shadow-sm">
             <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
-                {/* Logo */}
                 <Link href="/" className="text-2xl font-bold text-indigo-600">
                     Just Templates
                 </Link>
 
-                {/* Navigation Menu */}
                 <ul className="flex space-x-6 items-center">
                     <li>
                         <Link href="/" className="text-gray-600 hover:text-indigo-600 transition-colors">
@@ -23,7 +21,6 @@ export default async function Header() {
                         </Link>
                     </li>
 
-                    {/* Links based on Authentication Status */}
                     {user ? (
                         <>
                             <li>
