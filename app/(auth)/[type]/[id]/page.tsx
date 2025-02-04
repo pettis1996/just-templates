@@ -20,8 +20,9 @@ const data: Record<ItemType, Item[]> = {
 
 export default function ItemPage() {
     const { user, loading } = useUser();
-    if (!user) redirect("/sign-in");
-    
+
+    if (!user && !loading) redirect("/sign-in");
+
     const { type, id } = useParams() as { type: ItemType; id: string };
     const item = data[type]?.find((item) => item.id === parseInt(id));
 

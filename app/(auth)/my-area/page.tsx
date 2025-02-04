@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 export default function MyArea() {
     const { user, loading } = useUser();
 
-    if (!user) redirect("/sign-in");
+    if (!user && !loading) redirect("/sign-in");
 
     const lastViewedTemplates = [
         { id: 1, title: "Portfolio Template", image: "/placeholder.svg" },
@@ -29,7 +29,7 @@ export default function MyArea() {
             <div className="bg-white p-8 rounded-xl shadow-md flex gap-8 items-center mb-16">
                 <Image src="/placeholder.svg" alt="Profile Avatar" width={80} height={80} className="rounded-full" />
                 <div>
-                    <h2 className="text-2xl font-bold text-gray-800">{user.email}</h2>
+                    <h2 className="text-2xl font-bold text-gray-800">{user?.email}</h2>
                     <p className="text-gray-600">Welcome back! Let`s build something amazing.</p>
                 </div>
             </div>

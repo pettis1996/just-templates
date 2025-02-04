@@ -22,7 +22,7 @@ const data: Record<ItemType, Item[]> = {
 export default function DynamicPage() {
     const { user, loading } = useUser();
 
-    if (!user) redirect("/sign-in");
+    if (!user && !loading) redirect("/sign-in");
 
     const { type } = useParams() as { type: ItemType };
     const items = data[type] || [];
