@@ -1,6 +1,4 @@
-import React from "react";
-
-const AddTemplates = () => {
+export default function AddTemplates() {
     return (
         <div className="bg-white p-8 rounded-xl shadow-lg">
             <h2 className="text-2xl font-semibold mb-6">Add New Template</h2>
@@ -34,5 +32,3 @@ const AddTemplates = () => {
         </div>
     );
 };
-
-export default AddTemplates;

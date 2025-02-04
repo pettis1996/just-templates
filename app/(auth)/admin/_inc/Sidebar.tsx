@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import Image from "next/image";
 
 interface SideBarProps {
@@ -8,7 +7,7 @@ interface SideBarProps {
     userEmail: string;
 }
 
-const SideBar = ({ selectedSection, setSelectedSection, userEmail }: SideBarProps) => {
+export default function SideBar({ selectedSection, setSelectedSection, userEmail }: SideBarProps) {
     return (
         <aside className="w-64 bg-gray-800 text-white p-6 rounded-xl shadow-lg">
             <div className="flex items-center gap-4 mb-8">
@@ -19,9 +18,8 @@ const SideBar = ({ selectedSection, setSelectedSection, userEmail }: SideBarProp
                 <li>
                     <button
                         onClick={() => setSelectedSection("status")}
-                        className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
-                            selectedSection === "status" ? "bg-indigo-600 text-white" : "text-gray-300 hover:bg-indigo-600 hover:text-white"
-                        }`}
+                        className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${selectedSection === "status" ? "bg-indigo-600 text-white" : "text-gray-300 hover:bg-indigo-600 hover:text-white"
+                            }`}
                     >
                         Page Status
                     </button>
@@ -29,9 +27,8 @@ const SideBar = ({ selectedSection, setSelectedSection, userEmail }: SideBarProp
                 <li>
                     <button
                         onClick={() => setSelectedSection("templates")}
-                        className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
-                            selectedSection === "templates" ? "bg-indigo-600 text-white" : "text-gray-300 hover:bg-indigo-600 hover:text-white"
-                        }`}
+                        className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${selectedSection === "templates" ? "bg-indigo-600 text-white" : "text-gray-300 hover:bg-indigo-600 hover:text-white"
+                            }`}
                     >
                         Add Templates
                     </button>
@@ -39,9 +36,8 @@ const SideBar = ({ selectedSection, setSelectedSection, userEmail }: SideBarProp
                 <li>
                     <button
                         onClick={() => setSelectedSection("components")}
-                        className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
-                            selectedSection === "components" ? "bg-indigo-600 text-white" : "text-gray-300 hover:bg-indigo-600 hover:text-white"
-                        }`}
+                        className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${selectedSection === "components" ? "bg-indigo-600 text-white" : "text-gray-300 hover:bg-indigo-600 hover:text-white"
+                            }`}
                     >
                         Add Components
                     </button>
@@ -50,5 +46,3 @@ const SideBar = ({ selectedSection, setSelectedSection, userEmail }: SideBarProp
         </aside>
     );
 };
-
-export default SideBar;

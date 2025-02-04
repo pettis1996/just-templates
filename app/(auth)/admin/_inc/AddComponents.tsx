@@ -1,6 +1,4 @@
-import React from "react";
-
-const AddComponents = () => {
+export default function AddComponents() {
     return (
         <div className="bg-white p-8 rounded-xl shadow-lg">
             <h2 className="text-2xl font-semibold mb-6">Add New Component</h2>
@@ -34,5 +32,3 @@ const AddComponents = () => {
         </div>
     );
 };
-
-export default AddComponents;

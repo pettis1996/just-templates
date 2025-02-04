@@ -1,6 +1,4 @@
-import React from "react";
-
-const PageStatus = () => {
+export default function PageStatus() {
     return (
         <div className="bg-white p-8 rounded-xl shadow-lg">
             <h2 className="text-2xl font-semibold mb-6">Page Status</h2>
@@ -9,5 +7,3 @@ const PageStatus = () => {
         </div>
     );
 };
-
-export default PageStatus;
