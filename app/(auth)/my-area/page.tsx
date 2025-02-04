@@ -1,16 +1,13 @@
-import { createClient } from "@/utils/supabase/server";
+"use client"
+import { useUser } from "@/context/UserContext";
 import Image from "next/image";
+import { redirect } from "next/navigation";
 
-export default async function MyArea() {
-    const supabase = await createClient();
+export default function MyArea() {
+    const { user, loading } = useUser();
 
-    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) redirect("/sign-in");
 
-    if (!user) {
-        return <div className="text-center py-20 text-red-600 font-bold">User not found</div>;
-    }
-
-    // Example dummy data for viewed and saved templates
     const lastViewedTemplates = [
         { id: 1, title: "Portfolio Template", image: "/placeholder.svg" },
         { id: 2, title: "E-commerce Template", image: "/placeholder.svg" },
@@ -20,6 +17,10 @@ export default async function MyArea() {
         { id: 3, title: "Blog Template", image: "/placeholder.svg" },
         { id: 4, title: "Navigation Bar", image: "/placeholder.svg" },
     ];
+
+    if (loading) {
+        return <div className="text-center py-20 text-gray-600 font-bold">Loading...</div>;
+    }
 
     return (
         <div className="container mx-auto px-6 py-16">
