@@ -1,9 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import { useParams } from "next/navigation";
+import { redirect, useParams } from "next/navigation";
 import Link from "next/link";
 import React, { useState } from "react";
-import { Item, ItemType } from "../types";
+import { useUser } from "@/context/UserContext";
+import { Item, ItemType } from "@/app/types";
 
 const data: Record<ItemType, Item[]> = {
     templates: [
@@ -19,29 +20,35 @@ const data: Record<ItemType, Item[]> = {
 };
 
 export default function DynamicPage() {
-    const { type } = useParams() as { type: ItemType };
+    const { user, loading } = useUser();
 
+    if (!user && !loading) redirect("/sign-in");
+
+    const { type } = useParams() as { type: ItemType };
     const items = data[type] || [];
     const categories = [...new Set(items.map((item) => item.category))];
 
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
+    if (loading) {
+        return <div className="text-center py-20 text-gray-600 font-bold">Loading...</div>;
+    }
+
+
     const toggleCategory = (category: string) => {
         setSelectedCategories((prev) =>
-            prev.includes(category)
-                ? prev.filter((c) => c !== category)
-                : [...prev, category]
+            prev.includes(category) ? prev.filter((c) => c !== category) : [...prev, category]
         );
     };
 
     const filteredItems =
-        selectedCategories.length === 0
-            ? items
-            : items.filter((item) => selectedCategories.includes(item.category));
+        selectedCategories.length === 0 ? items : items.filter((item) => selectedCategories.includes(item.category));
 
     return (
         <div className="container mx-auto px-6 py-16">
-            <h1 className="text-4xl font-bold text-center mb-12">Explore Free {type === "templates" ? "Website Templates" : "Component Templates"}</h1>
+            <h1 className="text-4xl font-bold text-center mb-12">
+                Explore Free {type === "templates" ? "Website Templates" : "Component Templates"}
+            </h1>
 
             <div className="flex">
                 <aside className="w-72 p-6 bg-white shadow-xl rounded-lg mr-10">

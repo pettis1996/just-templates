@@ -1,16 +1,13 @@
-import { createClient } from "@/utils/supabase/server";
+"use client"
+import { useUser } from "@/context/UserContext";
 import Image from "next/image";
+import { redirect } from "next/navigation";
 
-export default async function MyArea() {
-    const supabase = await createClient();
+export default function MyArea() {
+    const { user, loading } = useUser();
 
-    const { data: { user } } = await supabase.auth.getUser();
+    if (!user && !loading) redirect("/sign-in");
 
-    if (!user) {
-        return <div className="text-center py-20 text-red-600 font-bold">User not found</div>;
-    }
-
-    // Example dummy data for viewed and saved templates
     const lastViewedTemplates = [
         { id: 1, title: "Portfolio Template", image: "/placeholder.svg" },
         { id: 2, title: "E-commerce Template", image: "/placeholder.svg" },
@@ -21,6 +18,10 @@ export default async function MyArea() {
         { id: 4, title: "Navigation Bar", image: "/placeholder.svg" },
     ];
 
+    if (loading) {
+        return <div className="text-center py-20 text-gray-600 font-bold">Loading...</div>;
+    }
+
     return (
         <div className="container mx-auto px-6 py-16">
             <h1 className="text-4xl font-bold text-gray-800 mb-8 text-center">My Area</h1>
@@ -28,7 +29,7 @@ export default async function MyArea() {
             <div className="bg-white p-8 rounded-xl shadow-md flex gap-8 items-center mb-16">
                 <Image src="/placeholder.svg" alt="Profile Avatar" width={80} height={80} className="rounded-full" />
                 <div>
-                    <h2 className="text-2xl font-bold text-gray-800">{user.email}</h2>
+                    <h2 className="text-2xl font-bold text-gray-800">{user?.email}</h2>
                     <p className="text-gray-600">Welcome back! Let`s build something amazing.</p>
                 </div>
             </div>

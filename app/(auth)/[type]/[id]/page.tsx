@@ -1,8 +1,9 @@
 "use client";
 import { Item, ItemType } from "@/app/types";
 import Image from "next/image";
-import { useParams } from "next/navigation";
+import { redirect, useParams } from "next/navigation";
 import { CustomBadge } from "@/components/CustomBadge";
+import { useUser } from "@/context/UserContext";
 
 const data: Record<ItemType, Item[]> = {
     templates: [
@@ -18,12 +19,21 @@ const data: Record<ItemType, Item[]> = {
 };
 
 export default function ItemPage() {
-    const { type, id } = useParams() as { type: ItemType; id: string };
+    const { user, loading } = useUser();
 
+    if (!user && !loading) redirect("/sign-in");
+
+    const { type, id } = useParams() as { type: ItemType; id: string };
     const item = data[type]?.find((item) => item.id === parseInt(id));
 
+
+    if (loading) {
+        return <div className="text-center py-20 text-gray-600 font-bold">Loading...</div>;
+    }
+
+
     if (!item) {
-        return <div className="text-center text-red-600 font-bold">Item not found</div>;
+        return <div className="text-center text-red-600 font-bold py-20">Item not found</div>;
     }
 
     return (
@@ -31,23 +41,19 @@ export default function ItemPage() {
             <h1 className="text-4xl font-bold mb-12 text-center text-gray-800">{item.title}</h1>
 
             <div className="max-w-4xl mx-auto">
-                {/* Image Section */}
                 <div className="relative w-full h-72 bg-gray-100 rounded-xl overflow-hidden shadow-lg mb-8">
                     <Image src={item.image} alt={item.title} fill className="object-cover" />
                 </div>
 
-                {/* Badges Section */}
                 <div className="flex flex-wrap gap-3 mb-8">
                     <CustomBadge>Type: {type}</CustomBadge>
                     <CustomBadge>Category: {item.category}</CustomBadge>
                     <CustomBadge>Author: {item.author || "Unknown"}</CustomBadge>
                 </div>
 
-                {/* Template Description */}
                 <h2 className="text-3xl font-semibold mb-4">Description</h2>
                 <p className="text-gray-600 text-lg mb-10 leading-relaxed">{item.description}</p>
 
-                {/* Buttons Section */}
                 <div className="flex gap-6">
                     <a
                         href="#"
