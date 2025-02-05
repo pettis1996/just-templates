@@ -1,16 +1,6 @@
-import { useUser } from "@/context/UserContext";
 import Link from "next/link"
-import { redirect } from "next/navigation";
 
 export default function Home() {
-  const { user, loading } = useUser();
-
-  if (!user && !loading) redirect("/sign-in");
-
-  if (loading) {
-    return <div className="text-center py-20 text-gray-600 font-bold">Loading...</div>;
-  }
-
   return (
     <div>
       <section className="bg-indigo-700 text-white py-20">
