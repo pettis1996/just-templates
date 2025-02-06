@@ -8,8 +8,6 @@ export default function Home() {
 
   if (!user && !loading) redirect("/sign-in");
 
-  console.log(user)
-
   if (loading) {
     return <div className="text-center py-20 text-gray-600 font-bold">Loading...</div>;
   }
