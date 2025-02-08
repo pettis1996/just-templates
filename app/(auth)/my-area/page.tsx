@@ -123,7 +123,9 @@ export default function MyArea() {
 
             if (savedTemplatesError) throw new Error(`Error fetching saved templates: ${savedTemplatesError.message}`);
 
-            const savedTemplateIds = savedTemplatesData.map((template: SavedTemplate) => template.template_id);
+            const savedTemplateIds = savedTemplatesData
+                .filter((template: SavedTemplate) => template.template_id !== null && template.template_id !== undefined)
+                .map((template: SavedTemplate) => template.template_id);
 
             const { data: websiteTemplates, error: websiteTemplatesError } = await supabase
                 .from("website_templates")
