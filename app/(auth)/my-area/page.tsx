@@ -6,6 +6,7 @@ import { User, Globe, Calendar, Edit3 } from "lucide-react";
 import { useState, useEffect } from "react";
 import ProfileModal from "./_inc/ProfileModal";
 import { createClient } from "@/utils/supabase/client";
+import Link from "next/link";
 
 interface Profile {
     nickname: string;
@@ -148,7 +149,7 @@ export default function MyArea() {
                     type: "component",
                 })),
             ];
-            
+
             setSavedTemplates(combinedSavedTemplates);
 
         } catch (error) {
@@ -212,9 +213,14 @@ export default function MyArea() {
                         <Globe className="text-indigo-600 w-6 h-6" />
                         <div>
                             <p className="text-sm text-gray-500">Website</p>
-                            <a href={profile?.website || "#"} className="text-lg font-semibold text-indigo-600 hover:underline">
+                            <Link
+                                href={profile?.website && !profile?.website.startsWith('http') ? `https://${profile.website}` : profile?.website || "#"}
+                                target="_blank"
+                                className="text-lg font-semibold text-indigo-600 hover:underline"
+                            >
                                 {profile?.website || "N/A"}
-                            </a>
+                            </Link>
+
                         </div>
                     </div>
                     <div className="flex items-center space-x-4">
