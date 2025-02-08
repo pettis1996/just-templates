@@ -126,7 +126,7 @@ export default function Profile({ onClose }: ProfileModalProps) {
                     initial={{ y: "100%", opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     exit={{ y: "100%", opacity: 0 }}
-                    transition={{ type: "spring", stiffness: 300 }}
+                    transition={{ type: "spring", stiffness: 100 }}
                 >
                     <h2 className="text-3xl font-bold mb-6 text-center">Edit Profile</h2>
                     <form onSubmit={handleSubmit}>
