@@ -4,7 +4,6 @@ import { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import { createClient } from "@/utils/supabase/client";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { useRouter } from "next/navigation";
 
 interface Profile {
     nickname: string;
@@ -29,8 +28,7 @@ export default function Profile({ onClose }: ProfileModalProps) {
         avatar_url: "",
     });
     const [avatarPreview, setAvatarPreview] = useState("/placeholder.svg");
-    const router = useRouter();
-
+    
     useEffect(() => {
         if (user) {
             fetchUserProfile();
@@ -106,7 +104,7 @@ export default function Profile({ onClose }: ProfileModalProps) {
 
         console.log("Profile updated or inserted successfully:", data);
         onClose(); 
-        router.refresh();
+        window.location.reload();
     };
 
     if (loading) {
