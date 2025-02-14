@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client"
 import { useUser } from "@/context/UserContext";
 import Link from "next/link"
@@ -11,7 +12,7 @@ export default function Home() {
   if (loading) {
     return <div className="text-center py-20 text-gray-600 font-bold">Loading...</div>;
   }
-  
+
   return (
     <div>
       <section className="bg-indigo-700 text-white py-20">
@@ -86,6 +87,39 @@ export default function Home() {
               <h3 className="text-xl font-semibold mb-2">Lightning Fast</h3>
               <p className="text-gray-600">Optimized for speed to enhance user experience</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">Featured Templates</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+            {[
+              { title: "Portfolio", img: "/images/portfolio-template.jpg", link: "/templates/portfolio" },
+              { title: "Business", img: "/images/business-template.jpg", link: "/templates/business" },
+              { title: "E-Commerce", img: "/images/ecommerce-template.jpg", link: "/templates/ecommerce" },
+            ].map((template, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-gray-200"
+              >
+                <img
+                  src={template.img}
+                  alt={template.title}
+                  className="w-full h-56 object-cover"
+                />
+                <div className="p-6">
+                  <h3 className="text-2xl font-semibold text-gray-900 mb-3">{template.title}</h3>
+                  <Link
+                    href={template.link}
+                    className="inline-block bg-indigo-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-indigo-700 transition"
+                  >
+                    View Details →
+                  </Link>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
